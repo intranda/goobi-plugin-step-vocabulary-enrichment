@@ -1,21 +1,47 @@
 <config_plugin>
-    <!--
-        order of configuration is:
-          1.) project name and step name matches
-          2.) step name matches and project is *
-          3.) project name matches and step name is *
-          4.) project name and step name are *
-	-->
-    
-    <config>
-        <!-- which projects to use for (can be more then one, otherwise use *) -->
-        <project>*</project>
-        <step>*</step>
-        
-        <!-- sample parameter -->
-        <value>test</value>
-        <!-- display button to finish the task directly from within the entered plugin -->
-        <allowTaskFinishButtons>true</allowTaskFinishButtons>
-    </config>
+	<!-- order of configuration is: 1.) project name and step name matches 2.) step name matches and project is * 3.) project name matches and step name is 
+		* 4.) project name and step name are * -->
+
+	<config>
+		<!-- which projects to use for (can be more then one, otherwise use *) -->
+		<project>*</project>
+		<step>*</step>
+
+		<!-- sample parameter -->
+		<value>test</value>
+		<!-- display button to finish the task directly from within the entered plugin -->
+		<allowTaskFinishButtons>true</allowTaskFinishButtons>
+
+		<item>
+			<source>meta.language</source>
+			<vocabulary>Sprachen</vocabulary>
+			<target>Sprache</target>
+			<generate field="authority" content="VIAF" />
+			<generate field="authorityMainURL" content="http://viaf.org/" />
+		</item>
+
+		<item>
+			<source>meta.place</source>
+			<vocabulary>Orte</vocabulary>
+			<target>Ort</target>
+			<generate field="authority" content="GeoNames" />
+			<generate field="authorityMainURL" content="http://geonames.org/" />
+		</item>
+
+		<item>
+			<source>meta.color</source>
+			<vocabulary>Farben</vocabulary>
+			<target>Farbe</target>
+		</item>
+
+		<item>
+			<source>meta.placeOfManufacture</source>
+			<vocabulary>Place</vocabulary>
+			<target>original value</target>
+			<generate field="authority" content="GeoNames" />
+			<generate field="authorityMainURL" content="http://geonames.org/" />
+		</item>
+
+	</config>
 
 </config_plugin>
