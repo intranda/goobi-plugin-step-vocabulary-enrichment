@@ -123,9 +123,6 @@ public class VocabularyEnrichmentStepPlugin implements IStepPluginVersion2 {
 
     @Override
     public PluginGuiType getPluginGuiType() {
-        //        return PluginGuiType.FULL;
-        // return PluginGuiType.PART;
-        // return PluginGuiType.PART_AND_FULL;
         return PluginGuiType.NONE;
     }
 
@@ -188,7 +185,6 @@ public class VocabularyEnrichmentStepPlugin implements IStepPluginVersion2 {
 
         for (String value : lstValues) {
 
-            //            List<VocabRecord> lstRecords = VocabularyManager.findRecords(item.getVocab(), item.getTarget(), value);
             List<VocabRecord> lstRecords = VocabularyManager.findRecords(item.getVocab(), value, item.getTarget());
 
             //aready exists: then ok
@@ -196,7 +192,7 @@ public class VocabularyEnrichmentStepPlugin implements IStepPluginVersion2 {
                 continue;
             }
 
-            //otherwsie create a new record:
+            //otherwise create a new record:
             VocabRecord record = makeNewRecord(vocabBean.getCurrentVocabulary(), item, value);
             vocabBean.setCurrentVocabRecord(record);
             vocabBean.saveRecordEdition();
@@ -232,8 +228,6 @@ public class VocabularyEnrichmentStepPlugin implements IStepPluginVersion2 {
             
             strEntry += strValue.charAt(i);
         }
-        
-//        String[] result = StringUtils.substringsBetween(strValue, "[", "]");
         
         return lstStrings;
     }

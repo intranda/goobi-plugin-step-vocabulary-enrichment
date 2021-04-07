@@ -7,11 +7,6 @@
 		<project>*</project>
 		<step>*</step>
 
-		<!-- sample parameter -->
-		<value>test</value>
-		<!-- display button to finish the task directly from within the entered plugin -->
-		<allowTaskFinishButtons>true</allowTaskFinishButtons>
-
 		<item>
 			<source>meta.language</source>
 			<vocabulary>Sprachen</vocabulary>
@@ -25,7 +20,7 @@
 			<vocabulary>Orte</vocabulary>
 			<target>Ort</target>
 			<generate field="authority" content="GeoNames" />
-			<generate field="authorityMainURL" content="http://geonames.org/" />
+			<generate field="authorityURI" content="http://geonames.org/" />
 		</item>
 
 		<item>
@@ -39,7 +34,7 @@
 			<vocabulary>Place</vocabulary>
 			<target>original value</target>
 			<generate field="authority" content="GeoNames" />
-			<generate field="authorityMainURL" content="http://geonames.org/" />
+			<generate field="authorityURI" content="http://geonames.org/" />
 		</item>
 
 	</config>
