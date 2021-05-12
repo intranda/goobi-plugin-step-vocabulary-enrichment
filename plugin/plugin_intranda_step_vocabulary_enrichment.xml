@@ -1,42 +1,44 @@
 <config_plugin>
-	<!-- order of configuration is: 1.) project name and step name matches 2.) step name matches and project is * 3.) project name matches and step name is 
-		* 4.) project name and step name are * -->
+    <!-- order of configuration is: 1.) project name and step name matches 2.) step name matches and project is * 3.) project name matches and step name is 
+        * 4.) project name and step name are * -->
 
-	<config>
-		<!-- which projects to use for (can be more then one, otherwise use *) -->
-		<project>*</project>
-		<step>*</step>
+    <config>
+        <!-- which projects to use for (can be more then one, otherwise use *) -->
+        <project>*</project>
+        <step>*</step>
 
-		<item>
-			<source>meta.language</source>
-			<vocabulary>Sprachen</vocabulary>
-			<target>Sprache</target>
-			<generate field="authority" content="VIAF" />
-			<generate field="authorityMainURL" content="http://viaf.org/" />
-		</item>
-
-		<item>
-			<source>meta.place</source>
-			<vocabulary>Orte</vocabulary>
-			<target>Ort</target>
-			<generate field="authority" content="GeoNames" />
-			<generate field="authorityURI" content="http://geonames.org/" />
-		</item>
-
-		<item>
-			<source>meta.color</source>
-			<vocabulary>Farben</vocabulary>
-			<target>Farbe</target>
-		</item>
-
-		<item>
-			<source>meta.placeOfManufacture</source>
-			<vocabulary>Place</vocabulary>
-			<target>original value</target>
-			<generate field="authority" content="GeoNames" />
-			<generate field="authorityURI" content="http://geonames.org/" />
-		</item>
-
-	</config>
+        <item>
+            <source>meta.originalAccessPersons</source>
+            <vocabulary>Access points</vocabulary>
+            <target>original value</target>
+            <generate field="type" content="AccessPersons" />
+            <generate field="authority" content="viaf" />
+            <generate field="authorityURI" content="https://viaf.org/" />
+        </item>
+        <item>
+            <source>meta.originalAccessCorporate</source>
+            <vocabulary>Access points</vocabulary>
+            <target>original value</target>
+            <generate field="type" content="AccessCorporate" />
+            <generate field="authority" content="viaf" />
+            <generate field="authorityURI" content="https://viaf.org/" />
+        </item>
+        <item>
+            <source>meta.originalAccessLocations</source>
+            <vocabulary>Access points</vocabulary>
+            <target>original value</target>
+            <generate field="type" content="AccessLocations" />
+            <generate field="authority" content="geonames" />
+            <generate field="authorityURI" content="http://www.geonames.org/" />
+        </item>
+        <item>
+            <source>meta.originalAccessSubject</source>
+            <vocabulary>Access points</vocabulary>
+            <target>original value</target>
+            <generate field="type" content="AccessSubject" />
+            <generate field="authority" content="geonames" />
+            <generate field="authorityURI" content="http://www.geonames.org/" />
+        </item>
+    </config>
 
 </config_plugin>
