@@ -184,8 +184,8 @@ public class VocabularyEnrichmentStepPlugin implements IStepPluginVersion2 {
         Boolean boChange = false;
 
         for (String value : lstValues) {
-
-            List<VocabRecord> lstRecords = VocabularyManager.findRecords(item.getVocab(), value, item.getTarget());
+            
+            List<VocabRecord> lstRecords = VocabularyManager.findExactRecords(item.getVocab(), value, item.getTarget());
 
             //aready exists: then ok
             if (!lstRecords.isEmpty()) {
@@ -203,6 +203,7 @@ public class VocabularyEnrichmentStepPlugin implements IStepPluginVersion2 {
             vocabBean.saveVocabulary();
         }
     }
+
 
     //extract the entries: they appear separated by commas with no spaces
     private ArrayList<String> getValues(String strValue) {
