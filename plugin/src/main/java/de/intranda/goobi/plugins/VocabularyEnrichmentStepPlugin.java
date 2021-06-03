@@ -2,7 +2,6 @@ package de.intranda.goobi.plugins;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  * This file is part of a plugin for Goobi - a Workflow tool for the support of mass digitization.
@@ -25,13 +24,9 @@ import java.util.Arrays;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import org.apache.commons.configuration.HierarchicalConfiguration;
 import org.apache.commons.configuration.SubnodeConfiguration;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.solr.client.solrj.request.CoreApiMapping.Meta;
 import org.goobi.beans.Step;
 import org.goobi.managedbeans.VocabularyBean;
 import org.goobi.production.enums.PluginGuiType;
@@ -53,9 +48,7 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.extern.log4j.Log4j2;
 import net.xeoh.plugins.base.annotations.PluginImplementation;
-import ugh.dl.DocStruct;
 import ugh.dl.Fileformat;
-import ugh.dl.Metadata;
 import ugh.dl.Prefs;
 import ugh.exceptions.PreferencesException;
 import ugh.exceptions.ReadException;
@@ -91,7 +84,7 @@ public class VocabularyEnrichmentStepPlugin implements IStepPluginVersion2 {
         // setup
         List<HierarchicalConfiguration> itemList = myconfig.configurationsAt("item");
 
-        vocabItems = new ArrayList<VocabItem>();
+        vocabItems = new ArrayList<>();
         for (HierarchicalConfiguration sub : itemList) {
             vocabItems.add(new VocabItem(sub));
         }
@@ -184,7 +177,7 @@ public class VocabularyEnrichmentStepPlugin implements IStepPluginVersion2 {
         Boolean boChange = false;
 
         for (String value : lstValues) {
-            
+
             List<VocabRecord> lstRecords = VocabularyManager.findExactRecords(item.getVocab(), value, item.getTarget());
 
             //aready exists: then ok
@@ -208,35 +201,35 @@ public class VocabularyEnrichmentStepPlugin implements IStepPluginVersion2 {
     //extract the entries: they appear separated by commas with no spaces
     private ArrayList<String> getValues(String strValue) {
 
-        ArrayList<String>  lstStrings = new ArrayList<String>();
+        ArrayList<String>  lstStrings = new ArrayList<>();
         String strEntry = "";
-        
+
         for (int i = 0; i < strValue.length(); i++) {
-            
+
             //finished?
             if (i == strValue.length()-1) {
                 strEntry += strValue.charAt(i);
                 lstStrings.add(strEntry);
                 break;
             }
-            
+
             //comma?
             if (i > 0 && strValue.charAt(i-1) != ' ' && strValue.charAt(i) == ',' && strValue.charAt(i+1) != ' ') {
                 lstStrings.add(strEntry);
                 strEntry = "";
                 continue;
-            } 
-            
+            }
+
             strEntry += strValue.charAt(i);
         }
-        
+
         return lstStrings;
     }
 
     private VocabRecord makeNewRecord(Vocabulary vocab, VocabItem item, String value) {
 
         HashMap<String, String> mapFields = item.getLstFieldsToGenerate();
-        ArrayList<Field> fields = new ArrayList<Field>();
+        ArrayList<Field> fields = new ArrayList<>();
 
         List<Definition> lstDefs = vocab.getStruct();
 
@@ -276,7 +269,7 @@ public class VocabularyEnrichmentStepPlugin implements IStepPluginVersion2 {
             vocab = sub.getString("vocabulary");
             source = sub.getString("source");
             target = sub.getString("target");
-            lstFieldsToGenerate = new HashMap<String, String>();
+            lstFieldsToGenerate = new HashMap<>();
 
             List<HierarchicalConfiguration> gens = sub.configurationsAt("//generate");
 
