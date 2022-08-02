@@ -41,7 +41,6 @@ import org.goobi.vocabulary.Vocabulary;
 
 import de.sub.goobi.config.ConfigPlugins;
 import de.sub.goobi.helper.VariableReplacer;
-import de.sub.goobi.helper.exceptions.DAOException;
 import de.sub.goobi.helper.exceptions.SwapException;
 import de.sub.goobi.persistence.managers.VocabularyManager;
 import lombok.Data;
@@ -52,7 +51,6 @@ import ugh.dl.Fileformat;
 import ugh.dl.Prefs;
 import ugh.exceptions.PreferencesException;
 import ugh.exceptions.ReadException;
-import ugh.exceptions.WriteException;
 
 @PluginImplementation
 @Log4j2
@@ -107,7 +105,7 @@ public class VocabularyEnrichmentStepPlugin implements IStepPluginVersion2 {
                 checkMetadata(prefs, item);
             }
 
-        } catch (ReadException | PreferencesException | WriteException | IOException | InterruptedException | SwapException | DAOException e) {
+        } catch (ReadException | PreferencesException | IOException | SwapException e) {
             log.error(e);
         }
 
@@ -197,24 +195,23 @@ public class VocabularyEnrichmentStepPlugin implements IStepPluginVersion2 {
         }
     }
 
-
     //extract the entries: they appear separated by commas with no spaces
     private ArrayList<String> getValues(String strValue) {
 
-        ArrayList<String>  lstStrings = new ArrayList<>();
+        ArrayList<String> lstStrings = new ArrayList<>();
         String strEntry = "";
 
         for (int i = 0; i < strValue.length(); i++) {
 
             //finished?
-            if (i == strValue.length()-1) {
+            if (i == strValue.length() - 1) {
                 strEntry += strValue.charAt(i);
                 lstStrings.add(strEntry);
                 break;
             }
 
             //comma?
-            if (i > 0 && strValue.charAt(i-1) != ' ' && strValue.charAt(i) == ',' && strValue.charAt(i+1) != ' ') {
+            if (i > 0 && strValue.charAt(i - 1) != ' ' && strValue.charAt(i) == ',' && strValue.charAt(i + 1) != ' ') {
                 lstStrings.add(strEntry);
                 strEntry = "";
                 continue;
