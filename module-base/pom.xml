@@ -2,9 +2,9 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>io.goobi.workflow.plugin</groupId>
-    <artifactId>plugin-step-vocabulary_enrichment</artifactId>
+    <artifactId>plugin-step-vocabulary-enrichment</artifactId>
     <version>24.03-SNAPSHOT</version>
   </parent>
-  <artifactId>plugin-step-vocabulary_enrichment-base</artifactId>
+  <artifactId>plugin-step-vocabulary-enrichment-base</artifactId>
   <packaging>jar</packaging>
 </project>

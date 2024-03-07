@@ -7,7 +7,7 @@
     <relativePath />
   </parent>
   <groupId>io.goobi.workflow.plugin</groupId>
-  <artifactId>plugin-step-vocabulary_enrichment</artifactId>
+  <artifactId>plugin-step-vocabulary-enrichment</artifactId>
   <packaging>pom</packaging>
   <modules>
     <module>module-base</module>
