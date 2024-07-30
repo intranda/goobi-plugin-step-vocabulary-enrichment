@@ -12,7 +12,7 @@ import io.goobi.vocabulary.exchange.Vocabulary;
 import io.goobi.vocabulary.exchange.VocabularyRecord;
 import io.goobi.vocabulary.exchange.VocabularySchema;
 import io.goobi.workflow.api.vocabulary.VocabularyAPIManager;
-import io.goobi.workflow.api.vocabulary.jsfwrapper.JSFVocabularyRecord;
+import io.goobi.workflow.api.vocabulary.helper.ExtendedVocabularyRecord;
 import lombok.Data;
 import lombok.Getter;
 import lombok.extern.log4j.Log4j2;
@@ -160,7 +160,11 @@ public class VocabularyEnrichmentStepPlugin implements IStepPluginVersion2 {
 
         for (String value : lstValues) {
             // TODO: This will not work consistently for main values with translations
-            Optional<JSFVocabularyRecord> hit = api.vocabularyRecords().search(vocabulary.getId(), searchField.get().getId() + ":" + value)
+            Optional<ExtendedVocabularyRecord> hit = api.vocabularyRecords()
+                    .list(vocabulary.getId())
+                    .search(searchField.get().getId() + ":" + value)
+                    .all()
+                    .request()
                     .getContent()
                     .stream()
                     .filter(r -> r.getMainValue().equals(value))
@@ -168,7 +172,7 @@ public class VocabularyEnrichmentStepPlugin implements IStepPluginVersion2 {
 
             //aready exists: then ok
             if (hit.isEmpty()) {
-                api.vocabularyRecords().create(makeNewRecord(vocabulary, schema, item, value));
+                api.vocabularyRecords().save(makeNewRecord(vocabulary, schema, item, value));
             }
         }
     }
