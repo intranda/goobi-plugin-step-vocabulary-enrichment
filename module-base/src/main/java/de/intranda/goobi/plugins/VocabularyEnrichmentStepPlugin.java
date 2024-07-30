@@ -229,7 +229,7 @@ public class VocabularyEnrichmentStepPlugin implements IStepPluginVersion2 {
             translation.setValue(fieldValue);
             FieldValue fv = new FieldValue();
             fv.setTranslations(List.of(translation));
-            field.setValues(Set.of(fv));
+            field.setValues(List.of(fv));
             result.getFields().add(field);
         }
 
