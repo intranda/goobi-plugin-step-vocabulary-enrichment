@@ -1,7 +1,7 @@
 ---
 title: Vokabelanreicherung
 identifier: intranda_step_vocabulary_enrichment
-description: Step Plugin für ZZZ
+description: Step Plugin für die automatische Anreicherung vom Vokabular 
 published: true
 ---
 
@@ -16,13 +16,7 @@ Um das Plugin nutzen zu können, müssen folgende Dateien installiert werden:
 /opt/digiverso/goobi/config/plugin_intranda_step_vocabulary_enrichment.xml
 ```
 
-Sobald das Plugin installiert ist, kann es innerhalb des Workflows für die jeweiligen Arbeitsschritte ausgewählt und somit automatisch ausgeführt werden. Ein Workflow könnte wie im folgenden Beispiel aussehen:
-
-![Beispiel für eine Workflow-Struktur](screen1_en.png)
-
-Um das Plugin zu verwenden, muss es in einem Arbeitsschritt des Workflows ausgewählt werden:
-
-![Konfiguration des Arbeitsschritts für die Verwendung des Plugins](screen2_en.png)
+Sobald das Plugin installiert ist, kann es innerhalb des Workflows für die jeweiligen Arbeitsschritte ausgewählt und somit automatisch ausgeführt werden. 
 
 
 ## Überblick und Funktionalität
@@ -30,7 +24,7 @@ Das Programm untersucht die Metadatenfelder einer METS-MODS-Datei aus einem Goob
 
 
 ## Konfiguration
-Das Plugin wird in der Datei `plugin_intranda_step_ZZZ.xml` wie folgt konfiguriert:
+Das Plugin wird in der Datei `plugin_intranda_step_vocabulary_enrichment.xml` wie folgt konfiguriert:
 
 {{CONFIG_CONTENT}}
 

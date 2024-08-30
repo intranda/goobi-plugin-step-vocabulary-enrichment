@@ -1,7 +1,7 @@
 ---
 title: Vocabulary enrichment
 identifier: intranda_step_vocabulary_enrichment
-description: Step Plugin for ZZZ
+description: Step Plugin for the Automatic Enrichment of Vocabulary
 published: true
 ---
 
@@ -16,21 +16,14 @@ To be able to use the plugin, the following files must be installed:
 /opt/digiverso/goobi/config/plugin_intranda_step_vocabulary_enrichment.xml
 ```
 
-Once the plugin has been installed, it can be selected within the workflow for the respective work steps and thus executed automatically. A workflow could look like the following example:
-
-![Example of a workflow structure](screen1_en.png)
-
-To use the plugin, it must be selected in a workflow step:
-
-![Configuration of the workflow step for using the plugin](screen2_en.png)
-
+Once the plugin has been installed, it can be selected within the workflow for the respective work steps and thus executed automatically. 
 
 ## Overview and functionality
 The program examines the metadata fields of a METS-MODS file from a Goobi process. For each `<item>` defined in the configuration file, the plugin will search the METS-MODS file for the specified metadata. The search can be restricted to the top struct of a document using the form `meta.topstruct.metadataName`. If one or more metadata are found, then the named vocabulary is searched. If the vocabulary does not contain an entry with field specifed by `target` which has a value equal to the value of the metadata found, then a new vocabulary entry is created with the `target` field given the value of the found metadata. If there are `generate` fields in the `<item>`, then the fields of the new vocabulary entry specified there are given the values defined in the `content` attributes.
 
 
 ## Configuration
-The plugin is configured in the file `plugin_intranda_step_ZZZ.xml` as shown here:
+The plugin is configured in the file `plugin_intranda_step_vocabulary_enrichment.xml` as shown here:
 
 {{CONFIG_CONTENT}}
 
