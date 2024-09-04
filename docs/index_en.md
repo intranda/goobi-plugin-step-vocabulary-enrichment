@@ -11,7 +11,7 @@ This documentation provides a brief overview of this plugin, which is used to en
 ## Installation
 To be able to use the plugin, the following files must be installed:
 
-```
+```bash
 /opt/digiverso/goobi/plugins/step/plugin_intranda_step_vocabulary_enrichment.jar
 /opt/digiverso/goobi/config/plugin_intranda_step_vocabulary_enrichment.xml
 ```
@@ -29,14 +29,10 @@ The plugin is configured in the file `plugin_intranda_step_vocabulary_enrichment
 
 {{CONFIG_DESCRIPTION_PROJECT_STEP}}
 
-The configuration allows different configurations for different process templates. For this purpose, only the name of the desired template must be entered in the `project` field. The entry with the value `*` is used for all projects for which no separate configuration exists.
-
 Parameter               | Explanation
 ------------------------|------------------------------------
-|  `project` | This parameter determines for which project the current block` <config>` is to apply. The name of the project is used here. This parameter can occur several times per `<config>` block.  |
-|  `step` | This parameter controls for which workflow steps the block `<config>` should apply. The name of the workflow step is used here. This parameter can occur several times per `<config>` block.  |
 |`item`| Each metadata which is to be added to a vocabulary is defined in an item. |
 |`source`   |This defines the metadata field from which to take the vocabulary entry.    |
 |`vocabulary`   | The name of the vocabulary to enrich.  |
 |` target`  | The name of the field in the vocabulary which is to be given the value in the source. |
-|`generate`   | These are optional fields: if they are specified, then each field in the vocabulary entry which is generated which specifed by the attribute "field" is given the value specified by the attribute "content".  |
+|`generate`   | These are optional fields: if they are specified, then each field in the vocabulary entry which is generated which specifed by the attribute `field` is given the value specified by the attribute `content`.  |
