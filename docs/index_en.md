@@ -3,6 +3,10 @@ title: Vocabulary enrichment
 identifier: intranda_step_vocabulary_enrichment
 description: Step Plugin for the Automatic Enrichment of Vocabulary
 published: true
+keywords:
+    - Goobi workflow
+    - Plugin
+    - Step Plugin
 ---
 
 ## Introduction
