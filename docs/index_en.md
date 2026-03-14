@@ -23,7 +23,7 @@ To be able to use the plugin, the following files must be installed:
 Once the plugin has been installed, it can be selected within the workflow for the respective work steps and thus executed automatically. 
 
 ## Overview and functionality
-The program examines the metadata fields of a METS-MODS file from a Goobi process. For each `<item>` defined in the configuration file, the plugin will search the METS-MODS file for the specified metadata. The search can be restricted to the top struct of a document using the form `meta.topstruct.metadataName`. If one or more metadata are found, then the named vocabulary is searched. If the vocabulary does not contain an entry with field specifed by `target` which has a value equal to the value of the metadata found, then a new vocabulary entry is created with the `target` field given the value of the found metadata. If there are `generate` fields in the `<item>`, then the fields of the new vocabulary entry specified there are given the values defined in the `content` attributes.
+The program examines the metadata fields of a METS-MODS file from a Goobi process. For each `<item>` defined in the configuration file, the plugin will search the METS-MODS file for the specified metadata. The search can be restricted to the top struct of a document using the form `meta.topstruct.metadataName`. If one or more metadata are found, then the named vocabulary is searched. If the vocabulary does not contain an entry with field specified by `target` which has a value equal to the value of the metadata found, then a new vocabulary entry is created with the `target` field given the value of the found metadata. If there are `generate` fields in the `<item>`, then the fields of the new vocabulary entry specified there are given the values defined in the `content` attributes.
 
 
 ## Configuration
@@ -39,4 +39,4 @@ Parameter               | Explanation
 |`source`   |This defines the metadata field from which to take the vocabulary entry.    |
 |`vocabulary`   | The name of the vocabulary to enrich.  |
 |` target`  | The name of the field in the vocabulary which is to be given the value in the source. |
-|`generate`   | These are optional fields: if they are specified, then each field in the vocabulary entry which is generated which specifed by the attribute `field` is given the value specified by the attribute `content`.  |
+|`generate`   | These are optional fields: if they are specified, then each field in the vocabulary entry which is generated which specified by the attribute `field` is given the value specified by the attribute `content`.  |
