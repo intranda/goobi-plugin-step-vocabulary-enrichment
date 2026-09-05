@@ -1,6 +1,9 @@
 # Goobi workflow Plugin: goobi-plugin-step-vocabulary-enrichment
 
-<img src="https://goobi.io/wp-content/uploads/logo_goobi_plugin.png" align="right" style="margin:0 0 20px 20px;" alt="Plugin for Goobi workflow" width="175" height="109">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://goobi.io/logo_goobi_workflow_dark.png">
+  <img src="https://goobi.io/logo_goobi_workflow.png" align="right" alt="Plugin for Goobi workflow" width="240" height="132" hspace="20" vspace="10">
+</picture>
 
 This Step plugin for Goobi workflow was developed for the yerusha project. It allows a configuration to define a metadata field (using the Goobi internal Variable-Replacer) to support reading Metadata from the METS-file or from process properties (e.g. for original access locations). It then checks if the metadata value from the configured field exists as main entry or inside of a configurable field inside of the defined vocabulary already. If the value from the configured field is not in the vocabulary already, it creates a new vocabulary record and writes the value into the configured field. Additionally it writes configured information into other fields of the same vocabulary record.
 
