@@ -206,7 +206,7 @@ public class VocabularyEnrichmentStepPlugin implements IStepPluginVersion2 {
     }
 
     // TODO
-    private VocabularyRecord makeNewRecord(Vocabulary vocabulary, VocabularySchema schema, VocabItem item, String value) {
+    VocabularyRecord makeNewRecord(Vocabulary vocabulary, VocabularySchema schema, VocabItem item, String value) {
         HashMap<String, String> mapFields = item.getLstFieldsToGenerate();
 
         VocabularyRecord result = new VocabularyRecord();
@@ -232,8 +232,8 @@ public class VocabularyEnrichmentStepPlugin implements IStepPluginVersion2 {
             TranslationInstance translation = new TranslationInstance();
             translation.setValue(fieldValue);
             FieldValue fv = new FieldValue();
-            fv.setTranslations(List.of(translation));
-            field.setValues(List.of(fv));
+            fv.setTranslations(new ArrayList<>(List.of(translation)));
+            field.setValues(new ArrayList<>(List.of(fv)));
             result.getFields().add(field);
         }
 
@@ -241,7 +241,7 @@ public class VocabularyEnrichmentStepPlugin implements IStepPluginVersion2 {
     }
 
     @Data
-    private class VocabItem {
+    class VocabItem {
 
         private String vocab;
         private String source;
