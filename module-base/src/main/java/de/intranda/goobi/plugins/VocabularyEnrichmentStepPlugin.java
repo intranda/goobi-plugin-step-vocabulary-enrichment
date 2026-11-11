@@ -159,7 +159,6 @@ public class VocabularyEnrichmentStepPlugin implements IStepPluginVersion2 {
         ArrayList<String> lstValues = getValues(strValue);
 
         for (String value : lstValues) {
-            // TODO: This will not work consistently for main values with translations
             Optional<ExtendedVocabularyRecord> hit = api.vocabularyRecords()
                     .list(vocabulary.getId())
                     .search(searchField.get().getId() + ":" + value)
@@ -167,7 +166,7 @@ public class VocabularyEnrichmentStepPlugin implements IStepPluginVersion2 {
                     .request()
                     .getContent()
                     .stream()
-                    .filter(r -> r.getMainValue().equals(value))
+                    .filter(r -> isExactMatch(r, searchField.get().getId(), value))
                     .findFirst();
 
             //aready exists: then ok
@@ -175,6 +174,16 @@ public class VocabularyEnrichmentStepPlugin implements IStepPluginVersion2 {
                 api.vocabularyRecords().save(makeNewRecord(vocabulary, schema, item, value));
             }
         }
+    }
+
+    // the server search is a substring search, so only records whose target field has exactly this value count as existing
+    static boolean isExactMatch(VocabularyRecord vocabularyRecord, long definitionId, String value) {
+        return vocabularyRecord.getFields()
+                .stream()
+                .filter(f -> f.getDefinitionId() == definitionId)
+                .flatMap(f -> f.getValues().stream())
+                .flatMap(v -> v.getTranslations().stream())
+                .anyMatch(t -> value.equals(t.getValue()));
     }
 
     //extract the entries: they appear separated by commas with no spaces

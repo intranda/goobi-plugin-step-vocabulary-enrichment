@@ -1,6 +1,8 @@
 package de.intranda.goobi.plugins;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.io.StringReader;
 import java.util.List;
@@ -62,5 +64,15 @@ public class VocabularyEnrichmentPluginTest {
         vocabularyRecord.getFields().removeIf(f -> f.getValues().isEmpty());
 
         assertEquals(3, vocabularyRecord.getFields().size());
+    }
+
+    @Test
+    public void existingRecordIsMatchedOnTargetFieldNotMainValue() throws ConfigurationException {
+        // definition 10 is the target field "original value", definition 12 ("authority") stands in for a different main field
+        VocabularyRecord vocabularyRecord = newRecord();
+
+        assertTrue(VocabularyEnrichmentStepPlugin.isExactMatch(vocabularyRecord, 10L, "Jane Doe"));
+        assertFalse(VocabularyEnrichmentStepPlugin.isExactMatch(vocabularyRecord, 10L, "Jane"));
+        assertFalse(VocabularyEnrichmentStepPlugin.isExactMatch(vocabularyRecord, 11L, "Jane Doe"));
     }
 }
